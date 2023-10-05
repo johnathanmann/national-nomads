@@ -1,5 +1,5 @@
-'use client';
-
+"use client";
+import Link from "next/link";
 import { useState, useEffect } from "react";
 import API_KEY  from "./apiKey";
 
@@ -27,8 +27,8 @@ useEffect(() => {
   return (
     <div>
         <h1>Parks</h1>
-        {parks.map((item, index)=>{
-                return <h1>{parks[index].fullName}</h1>})}
+        {parks?.map((item, index)=>{
+                return <Link href={`/park-map/`+parks[index].parkCode} id={parks[index].id}>{parks[index].fullName}</Link>})}
     </div>
   )
 }
