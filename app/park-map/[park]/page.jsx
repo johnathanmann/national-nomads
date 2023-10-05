@@ -1,28 +1,23 @@
 'use client';
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, componentDidMount } from "react";
 import API_KEY  from "../apiKey";
 import { useParams } from 'next/navigation'
 const Park = () => {
-const [singlePark, setPark] = useState();
+const [singlePark, setPark] = useState([]);
 const params = useParams();
 
 async function getPark(){
-    console.log(params)
-    fetch("https://developer.nps.gov/api/v1/parks?parkCode="+params.park+"&api_key="+API_KEY)
-    .then((response) => response.json())
-    .then((json) => {
-          setPark(json.data)
-    })
-    .catch((error) => console.error(`Error fetching data: ${error.message}`));
+    const response = await fetch("https://developer.nps.gov/api/v1/parks?parkCode="+params.park+"&api_key="+API_KEY);
+    const park = await response.json();
+    setPark(park.data[0])
 };
 
 useEffect(() => {
     getPark();
-  }, []);
-  console.log(singlePark[0].fullName)
+  }, [singlePark])
   return (
-    <div></div>
+    <div><h1>{singlePark.fullName}</h1></div>
   )
 }
 
