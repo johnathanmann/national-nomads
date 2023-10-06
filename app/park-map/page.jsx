@@ -28,7 +28,7 @@ useEffect(() => {
     <div>
         <h1>Parks</h1>
         {parks?.map((item, index)=>{
-                return <Link href={`/park-map/`+parks[index].parkCode} id={parks[index].id}>{parks[index].fullName}</Link>})}
+                return <Link href={`/park-map/`+parks[index].parkCode} id={parks[index].id} key={parks[index].id}>{parks[index].fullName}</Link>})}
     </div>
   )
 }

@@ -1,11 +1,14 @@
 'use client';
 
+import Link from "next/link";
 import { useState, useEffect, componentDidMount } from "react";
 import API_KEY  from "../apiKey";
 import { useParams } from 'next/navigation'
+
 const Park = () => {
 const [singlePark, setPark] = useState([]);
 const params = useParams();
+console.log(params)
 
 async function getPark(){
     const response = await fetch("https://developer.nps.gov/api/v1/parks?parkCode="+params.park+"&api_key="+API_KEY);
@@ -17,7 +20,10 @@ useEffect(() => {
     getPark();
   }, [singlePark])
   return (
-    <div><h1>{singlePark.fullName}</h1></div>
+    <div>
+        <h1>{singlePark.fullName}</h1>
+        <button><Link href={`/park-map/`+"/"+singlePark.id+"/"+singlePark.fullName}>Review {singlePark.fullName}</Link></button>
+    </div>
   )
 }
 
