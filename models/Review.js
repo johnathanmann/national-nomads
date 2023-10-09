@@ -6,16 +6,16 @@ const ReviewSchema = new Schema({
         type: String,
         required: true
     },
-    userId: {
+    user: {
         type: String,
         required: true
     },
-    body: {
+    review: {
         type: String,
         required: true
     }
 })
 
-const User = models.User || model("User", UserSchema);
+const Review = models.Review || model("Review", ReviewSchema);
 
-export default User; 
+export default Review; 
