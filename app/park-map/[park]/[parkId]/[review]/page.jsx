@@ -3,8 +3,9 @@ import { useSession } from "next-auth/react";
 import { useParams } from 'next/navigation'
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import timestamp from "time-stamp";
 import Form from '@components/Form'
-
+console.log(time)
 export default function Review (){
     const params = useParams();
     const router = useRouter();
@@ -22,13 +23,13 @@ export default function Review (){
         e.preventDefault();
         setSubmitting(true);
         try {
-            console.log(session)
             const response = await fetch ('/api/review/new', {
                 method: 'POST',
                 body:  JSON.stringify({
                     review: post.review,
                     userId: session?.user.id,
-                    parkId: params.parkId
+                    parkId: params.parkId,
+                    timestamp: timestamp('YYYY/MM/DD')
                 })
             })
             if(response.ok){

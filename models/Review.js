@@ -1,6 +1,5 @@
 import {Schema, model, models} from 'mongoose';
 
-
 const ReviewSchema = new Schema({
     parkId: {
         type: String,
@@ -11,6 +10,10 @@ const ReviewSchema = new Schema({
         required: true
     },
     review: {
+        type: String,
+        required: true
+    },
+    timestamp: {
         type: String,
         required: true
     }
