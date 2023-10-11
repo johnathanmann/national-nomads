@@ -5,7 +5,6 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import timestamp from "time-stamp";
 import Form from '@components/Form'
-console.log(time)
 export default function Review (){
     const params = useParams();
     const router = useRouter();
@@ -33,8 +32,8 @@ export default function Review (){
                 })
             })
             if(response.ok){
-                // router.push('/')
                 console.log(response)
+                router.push(`/park-map/`+params.park+`/`+params.parkId)
             }
         } catch(error){
             console.log(error)
