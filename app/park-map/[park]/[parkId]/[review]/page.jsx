@@ -28,7 +28,7 @@ export default function Review (){
                 body:  JSON.stringify({
                     review: post.review,
                     userId: session?.user.id,
-                    parkId: params.park
+                    parkId: params.parkId
                 })
             })
             if(response.ok){
