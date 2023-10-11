@@ -23,7 +23,7 @@ export default function Review (){
         setSubmitting(true);
         try {
             console.log(session)
-            const response = await fetch ('/api/review', {
+            const response = await fetch ('/api/review/new', {
                 method: 'POST',
                 body:  JSON.stringify({
                     review: post.review,
